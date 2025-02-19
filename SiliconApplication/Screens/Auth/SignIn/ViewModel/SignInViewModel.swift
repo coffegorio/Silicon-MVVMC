@@ -13,4 +13,12 @@ class SignInViewModel: ObservableObject {
     init(coordinator: AuthCoordinator?) {
         self.coordinator = coordinator
     }
+    
+    func showSignUp() {
+        coordinator?.showSignUpView()
+    }
+    
+    func showResetPassword() {
+        coordinator?.showResetPassword()
+    }
 }

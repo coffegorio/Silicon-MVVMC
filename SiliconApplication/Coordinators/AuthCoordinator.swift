@@ -27,8 +27,28 @@ class AuthCoordinator: Coordinator {
         navigationController.pushViewController(hostingController, animated: true)
     }
     
+    func showSignUpView() {
+        let signUpViewModel = SignUpViewModel(coordinator: self)
+        let signUpView = SignUpView(viewModel: signUpViewModel)
+        let hostingController = UIHostingController(rootView: signUpView)
+        hostingController.modalPresentationStyle = .formSheet
+        navigationController.present(hostingController, animated: true)
+    }
+    
+    func showResetPassword() {
+        let resetPasswordViewModel = ResetPasswordViewModel(coordinator: self)
+        let resetPasswordView = ResetPasswordView(viewModel: resetPasswordViewModel)
+        let hostingController = UIHostingController(rootView: resetPasswordView)
+        hostingController.modalPresentationStyle = .formSheet
+        navigationController.present(hostingController, animated: true)
+    }
+    
     func finish() {
+        childCoordinators.removeAll()
         
+        let mainCoordinator = MainCoordinator(navigationController: navigationController)
+        childCoordinators.append(mainCoordinator)
+        mainCoordinator.start()
     }
 }
 

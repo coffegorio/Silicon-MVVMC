@@ -14,7 +14,6 @@ struct SignInView: View {
     @State var password: String = ""
     
     var body: some View {
-        
         ZStack {
             Color(.white)
                 .ignoresSafeArea(.all)
@@ -29,12 +28,14 @@ struct SignInView: View {
                 Text("Ставьте задачи, делитесь идеями, создавайте презентации и вдохновляйте других на развитие.")
                     .font(.system(size: 18))
                     .foregroundStyle(Color(ApplicationColors.labelColor))
+                    .multilineTextAlignment(.center)
                 CustomTextFieldWrapper(placeholder: "Электронная почта", image: UIImage(systemName: "envelope.fill"), text: $email)
                     .frame(height: 50)
-                CustomTextFieldWrapper(placeholder: "Электронная почта", image: UIImage(systemName: "lock.fill"), text: $password)
+                CustomTextFieldWrapper(placeholder: "Пароль", image: UIImage(systemName: "lock.fill"), text: $password)
                     .frame(height: 50)
-                
-                Button {} label: {
+                Button {
+                    
+                } label: {
                     Text("Войти")
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -42,12 +43,16 @@ struct SignInView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(.white)
                 }
-                Button {} label: {
+                Button {
+                    viewModel.showSignUp()
+                } label: {
                     Text("Зарегистрироваться")
                         .font(.system(size: 16))
                         .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
                 }
-                Button {} label: {
+                Button {
+                    viewModel.showResetPassword()
+                } label: {
                     Text("Забыли пароль?")
                         .font(.system(size: 16))
                         .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
