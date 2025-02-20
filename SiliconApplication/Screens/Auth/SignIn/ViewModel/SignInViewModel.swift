@@ -21,4 +21,12 @@ class SignInViewModel: ObservableObject {
     func showResetPassword() {
         coordinator?.showResetPassword()
     }
+    
+    func showMainAuth() {
+        coordinator?.start()
+    }
+    
+    func finishAuth() {
+        coordinator?.finish()
+    }
 }

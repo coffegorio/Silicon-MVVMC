@@ -13,4 +13,9 @@ class SignUpViewModel: ObservableObject {
     init(coordinator: AuthCoordinator?) {
         self.coordinator = coordinator
     }
+    
+    func backToLogin() {
+        self.coordinator?.showSignInView()
+    }
+    
 }

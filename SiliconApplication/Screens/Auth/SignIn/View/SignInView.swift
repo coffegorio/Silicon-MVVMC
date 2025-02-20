@@ -21,7 +21,7 @@ struct SignInView: View {
                 Image("logo")
                     .appLogoStyle()
                 Text("Идеи, цели, успех")
-                    .font(.title)
+                    .font(.title2)
                     .fontWeight(.bold)
                     .foregroundStyle(Color(ApplicationColors.labelColor))
                     .padding(.top, 20)
@@ -34,7 +34,7 @@ struct SignInView: View {
                 CustomTextFieldWrapper(placeholder: "Пароль", image: UIImage(systemName: "lock.fill"), text: $password)
                     .frame(height: 50)
                 Button {
-                    
+                    viewModel.finishAuth()
                 } label: {
                     Text("Войти")
                         .padding()
@@ -54,6 +54,13 @@ struct SignInView: View {
                     viewModel.showResetPassword()
                 } label: {
                     Text("Забыли пароль?")
+                        .font(.system(size: 16))
+                        .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
+                }
+                Button {
+                    viewModel.showMainAuth()
+                } label: {
+                    Text("Назад")
                         .font(.system(size: 16))
                         .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
                 }

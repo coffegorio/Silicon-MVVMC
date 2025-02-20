@@ -28,10 +28,16 @@ class AppCoordinator: Coordinator {
     }
     
     func finish() {
-        childCoordinators.removeAll()
+        // Убираем только текущий дочерний координатор
+        if let coordinatorToRemove = childCoordinators.first {
+            childCoordinators.removeAll { $0 === coordinatorToRemove }
+        }
         
+        // Запускаем новый координатор, например, AuthCoordinator
         let authCoordinator = AuthCoordinator(navigationController: navigationController)
         childCoordinators.append(authCoordinator)
         authCoordinator.start()
     }
 }
+
+extension AppCoordinator: PreviewCoordinator {}

@@ -39,6 +39,12 @@ struct ResetPasswordView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .foregroundStyle(.white)
                 }
+                Button {
+                    viewModel.backToLogin()
+                } label: {
+                    Text("Назад")
+                        .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
+                }
             }
             .padding(20)
         }

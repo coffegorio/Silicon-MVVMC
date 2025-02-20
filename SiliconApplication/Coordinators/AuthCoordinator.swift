@@ -17,10 +17,17 @@ class AuthCoordinator: Coordinator {
     }
     
     func start() {
-        showSignInView()
+        showMainAuthView()
     }
     
-    private func showSignInView() {
+    func showMainAuthView() {
+        let mainAuthViewModel = MainAuthViewModel(coordinator: self)
+        let mainAuthView = MainAuthView(viewModel: mainAuthViewModel)
+        let hostingController = UIHostingController(rootView: mainAuthView)
+        navigationController.pushViewController(hostingController, animated: true)
+    }
+    
+    func showSignInView() {
         let signInViewModel = SignInViewModel(coordinator: self)
         let signInView = SignInView(viewModel: signInViewModel)
         let hostingController = UIHostingController(rootView: signInView)
@@ -31,20 +38,20 @@ class AuthCoordinator: Coordinator {
         let signUpViewModel = SignUpViewModel(coordinator: self)
         let signUpView = SignUpView(viewModel: signUpViewModel)
         let hostingController = UIHostingController(rootView: signUpView)
-        hostingController.modalPresentationStyle = .formSheet
-        navigationController.present(hostingController, animated: true)
+        navigationController.pushViewController(hostingController, animated: true)
     }
     
     func showResetPassword() {
         let resetPasswordViewModel = ResetPasswordViewModel(coordinator: self)
         let resetPasswordView = ResetPasswordView(viewModel: resetPasswordViewModel)
         let hostingController = UIHostingController(rootView: resetPasswordView)
-        hostingController.modalPresentationStyle = .formSheet
-        navigationController.present(hostingController, animated: true)
+        navigationController.pushViewController(hostingController, animated: true)
     }
     
     func finish() {
-        childCoordinators.removeAll()
+        if let coordinatorToRemove = childCoordinators.first {
+            childCoordinators.removeAll { $0 === coordinatorToRemove }
+        }
         
         let mainCoordinator = MainCoordinator(navigationController: navigationController)
         childCoordinators.append(mainCoordinator)
