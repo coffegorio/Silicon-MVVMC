@@ -20,11 +20,11 @@ class CustomTextField: UITextField, UITextFieldDelegate {
         self.attributedPlaceholder = NSAttributedString(
                 string: placeholder,
                 attributes: [
-                    .foregroundColor: ApplicationColors.secondaryLabelColor // Используй нужный цвет
+                    .foregroundColor: UIColor.label
                 ]
             )
         self.font = UIFont.systemFont(ofSize: 16)
-        self.textColor = ApplicationColors.secondaryLabelColor
+        self.textColor = .label
         self.backgroundColor = .clear
         self.autocorrectionType = .no
         self.layer.cornerRadius = 10

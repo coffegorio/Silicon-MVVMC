@@ -13,15 +13,15 @@ struct MainAuthView: View {
     
     var body: some View {
         ZStack {
-            Color(.white)
-                .ignoresSafeArea(.all)
+//            Color(.white)
+//                .ignoresSafeArea(.all)
             VStack(spacing: 35) {
                 Image("logo")
                     .appLogoStyle(width: 200, height: 60)
                 Text("Войдите или зарегистрируйстесь, что бы начать")
                     .font(.title)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color(ApplicationColors.labelColor))
+//                    .foregroundStyle(Color(ApplicationColors.labelColor))
                     .multilineTextAlignment(.center)
                 Button {} label: {
                     HStack(spacing: 10) {
@@ -38,7 +38,7 @@ struct MainAuthView: View {
                             .mainAuthNavigationButton()
                         Image(systemName: "apple.logo")
                             .imageConfiguration(width: 25, height: 25)
-                            .foregroundStyle(.black)
+                            .foregroundStyle(.blue)
                     }
                 }
                 Button {
@@ -69,7 +69,7 @@ extension View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color(ApplicationColors.mochaMousse), lineWidth: 2)
             )
-            .foregroundStyle(Color(ApplicationColors.labelColor))
+            .foregroundStyle(Color(.label))
     }
 }
 

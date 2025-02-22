@@ -16,7 +16,7 @@ struct ApplicationColors {
     static let chanterelle = UIColor(hex: "#A28777")
     static let balticAmber = UIColor(hex: "#8B645A")
     static let chocolateMartiny = UIColor(hex: "#56453F")
-    static let labelColor = UIColor(hex: "#333333")
+    static let labelColor = UIColor.label
     static let secondaryLabelColor = UIColor(hex: "#666666")
     
 }

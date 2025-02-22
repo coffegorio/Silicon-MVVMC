@@ -15,19 +15,15 @@ struct SignInView: View {
     
     var body: some View {
         ZStack {
-            Color(.white)
-                .ignoresSafeArea(.all)
             VStack(spacing: 28) {
                 Image("logo")
                     .appLogoStyle()
                 Text("Идеи, цели, успех")
                     .font(.title2)
                     .fontWeight(.bold)
-                    .foregroundStyle(Color(ApplicationColors.labelColor))
                     .padding(.top, 20)
                 Text("Ставьте задачи, делитесь идеями, создавайте презентации и вдохновляйте других на развитие.")
                     .font(.system(size: 18))
-                    .foregroundStyle(Color(ApplicationColors.labelColor))
                     .multilineTextAlignment(.center)
                 CustomTextFieldWrapper(placeholder: "Электронная почта", image: UIImage(systemName: "envelope.fill"), text: $email)
                     .frame(height: 50)
@@ -48,21 +44,21 @@ struct SignInView: View {
                 } label: {
                     Text("Зарегистрироваться")
                         .font(.system(size: 16))
-                        .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
+                        .foregroundStyle(Color(.label))
                 }
                 Button {
                     viewModel.showResetPassword()
                 } label: {
                     Text("Забыли пароль?")
                         .font(.system(size: 16))
-                        .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
+                        .foregroundStyle(Color(.label))
                 }
                 Button {
                     viewModel.showMainAuth()
                 } label: {
                     Text("Назад")
                         .font(.system(size: 16))
-                        .foregroundStyle(Color(ApplicationColors.chocolateMartiny))
+                        .foregroundStyle(Color(.label))
                 }
             }
             .padding(20)
