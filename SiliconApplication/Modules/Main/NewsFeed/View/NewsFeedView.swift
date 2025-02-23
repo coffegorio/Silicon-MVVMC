@@ -8,27 +8,25 @@
 import SwiftUI
 
 struct NewsFeedView: View {
-    
     @ObservedObject var viewModel: NewsFeedViewModel
-    
+    @State private var localUserName: String = ""
+
     var body: some View {
         ZStack {
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text(Date().greetings)
+                    .font(.title2)
+                
                 HStack {
-                    Text(Date().greetings)
-                        .font(.title2)
-                    
                     if viewModel.isUserNameEmpty {
-                        // Если имя пустое, показываем поле ввода
-                        CustomTextFieldWrapper(placeholder: "Как Вас зовут?", image: UIImage(systemName: "person.fill"), text: Binding(
-                            get: { "" },
-                            set: { newValue in
-                                viewModel.updateUserName(newName: newValue)
-                            }
-                        ))
-                        .frame(height: 50)
+                        CustomTextFieldWrapper(placeholder: "Как Вас зовут?", image: UIImage(systemName: "person.fill"), text: $localUserName)
+                            .frame(height: 50)
+                        
+                        Button("Сохранить") {
+                            viewModel.updateUserName(newName: localUserName)
+                        }
+                        .disabled(localUserName.trimmingCharacters(in: .whitespaces).isEmpty)
                     } else {
-                        // Иначе показываем имя
                         Text(viewModel.userName ?? "Имя не задано")
                             .font(.title2)
                             .foregroundColor(.gray)
@@ -36,8 +34,16 @@ struct NewsFeedView: View {
                 }
             }
             .padding()
+            // Блокируем взаимодействие с основным интерфейсом во время загрузки
+            .disabled(viewModel.isLoading)
+            
+            if viewModel.isLoading {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .scaleEffect(1.5)
+            }
         }
     }
 }
-
-

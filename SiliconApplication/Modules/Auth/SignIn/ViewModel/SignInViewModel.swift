@@ -37,12 +37,28 @@ class SignInViewModel: ObservableObject {
             switch result {
             case .success(let user):
                 print("User signed in successfully: \(user.email ?? "No email")")
-                self?.coordinator?.finish()
+                
+                // Загружаем имя пользователя
+                FirestoreManager.shared.getUser { userModel, error in
+                    if let userModel = userModel {
+                        let userName = userModel.userName ?? ""
+                        
+                        // Сохраняем в UserDefaults
+                        UserDefaults.standard.set(userName, forKey: "userName")
+                    }
+                    DispatchQueue.main.async {
+                        self?.coordinator?.finish()
+                    }
+                }
+                
             case .failure(let error):
                 print("Error signing in: \(error.localizedDescription)")
             }
         }
     }
+
+    
+    
     
     func finish() {
         coordinator?.finish()

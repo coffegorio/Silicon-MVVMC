@@ -24,7 +24,8 @@ class ProfileViewModel: ObservableObject {
                 if let error = error {
                     print("Ошибка при выходе: \(error.localizedDescription)")
                 } else {
-                    self?.coordinator?.finish() // Возвращаем пользователя на экран авторизации
+                    UserDefaultsManager.shared.removeUsername()
+                    self?.coordinator?.finish()
                 }
             }
         }
