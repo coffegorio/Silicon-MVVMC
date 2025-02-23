@@ -31,10 +31,12 @@ struct ResetPasswordView: View {
                     Text("Восстановить")
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color(ApplicationColors.chocolateMartiny))
+                        .background(email.isEmpty ? Color.gray : Color(ApplicationColors.chocolateMartiny))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(email.isEmpty ? Color.white.opacity(0.5) : .white)
                 }
+                .disabled(email.isEmpty)
+                
                 Button {
                     viewModel.backToLogin()
                 } label: {

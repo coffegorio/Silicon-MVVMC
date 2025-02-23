@@ -1,5 +1,5 @@
 //
-//  UserModel.swift
+//  SignInUserRequest.swift
 //  SiliconApplication
 //
 //  Created by Егорио on 22.02.2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserModel: Codable {
-    var username: String
+struct SignInUserRequest {
     var email: String
+    var password: String
 }

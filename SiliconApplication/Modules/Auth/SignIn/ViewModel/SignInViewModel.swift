@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class SignInViewModel: ObservableObject {
+    @Published var isLoading = false
+    
     private weak var coordinator: AuthCoordinator?
     
     init(coordinator: AuthCoordinator?) {
@@ -26,7 +29,23 @@ class SignInViewModel: ObservableObject {
         coordinator?.start()
     }
     
-    func finishAuth() {
+    func finishAuth(email: String, password: String) {
+        isLoading = true
+        let userRequest = SignInUserRequest(email: email, password: password)
+        
+        SignInManager.shared.signInUser(with: userRequest) { [weak self] result in
+            switch result {
+            case .success(let user):
+                print("User signed in successfully: \(user.email ?? "No email")")
+                self?.coordinator?.finish()
+            case .failure(let error):
+                print("Error signing in: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func finish() {
         coordinator?.finish()
     }
 }
+

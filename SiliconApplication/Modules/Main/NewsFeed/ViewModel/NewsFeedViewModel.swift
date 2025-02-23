@@ -8,20 +8,9 @@
 import Foundation
 
 class NewsFeedViewModel: ObservableObject {
-    @Published var user: UserModel {
-        didSet {
-            UserManager.shared.user = user
-        }
-    }
-    
     private weak var coordinator: MainCoordinator?
     
     init(coordinator: MainCoordinator) {
         self.coordinator = coordinator
-        self.user = UserManager.shared.user
-    }
-    
-    var isUsernameEntered: Bool {
-        !user.username.isEmpty
     }
 }

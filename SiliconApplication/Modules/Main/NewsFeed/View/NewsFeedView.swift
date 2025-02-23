@@ -16,13 +16,6 @@ struct NewsFeedView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text(Date().greetings)
                     .font(.title2)
-                if viewModel.isUsernameEntered {
-                    Text(viewModel.user.username)
-                        .font(.title2)
-                } else {
-                    CustomTextFieldWrapper(placeholder: "Как Вас зовут?", image: UIImage(systemName: "person.fill"), text: $viewModel.user.username)
-                        .frame(height: 50)
-                }
             }
             .padding()
         }

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E882AB582D66CBD600141353 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E882AB572D66CBD600141353 /* SnapKit */; };
+		E8B396FF2D695F8A00E8168C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E8B396FE2D695F8A00E8168C /* FirebaseAnalytics */; };
+		E8B397012D695F8A00E8168C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E8B397002D695F8A00E8168C /* FirebaseAuth */; };
+		E8B397032D695F8A00E8168C /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E8B397022D695F8A00E8168C /* FirebaseCore */; };
+		E8DC1DF82D69658A00087428 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E8DC1DF72D69658A00087428 /* FirebaseFirestore */; };
 		E8E4AE9C2D640553003E2C7C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = E8E4AE9B2D640553003E2C7C /* Lottie */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +46,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8E4AE9C2D640553003E2C7C /* Lottie in Frameworks */,
+				E8B397032D695F8A00E8168C /* FirebaseCore in Frameworks */,
 				E882AB582D66CBD600141353 /* SnapKit in Frameworks */,
+				E8B396FF2D695F8A00E8168C /* FirebaseAnalytics in Frameworks */,
+				E8B397012D695F8A00E8168C /* FirebaseAuth in Frameworks */,
+				E8DC1DF82D69658A00087428 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +95,10 @@
 			packageProductDependencies = (
 				E8E4AE9B2D640553003E2C7C /* Lottie */,
 				E882AB572D66CBD600141353 /* SnapKit */,
+				E8B396FE2D695F8A00E8168C /* FirebaseAnalytics */,
+				E8B397002D695F8A00E8168C /* FirebaseAuth */,
+				E8B397022D695F8A00E8168C /* FirebaseCore */,
+				E8DC1DF72D69658A00087428 /* FirebaseFirestore */,
 			);
 			productName = SiliconApplication;
 			productReference = E8E4AE6D2D63E614003E2C7C /* SiliconApplication.app */;
@@ -119,6 +131,7 @@
 			packageReferences = (
 				E8E4AE9A2D640553003E2C7C /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				E882AB562D66CBD600141353 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E8B396FD2D695F8A00E8168C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E8E4AE6E2D63E614003E2C7C /* Products */;
@@ -368,6 +381,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		E8B396FD2D695F8A00E8168C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
 		E8E4AE9A2D640553003E2C7C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -383,6 +404,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E882AB562D66CBD600141353 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		E8B396FE2D695F8A00E8168C /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8B396FD2D695F8A00E8168C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		E8B397002D695F8A00E8168C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8B396FD2D695F8A00E8168C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E8B397022D695F8A00E8168C /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8B396FD2D695F8A00E8168C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		E8DC1DF72D69658A00087428 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E8B396FD2D695F8A00E8168C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		E8E4AE9B2D640553003E2C7C /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

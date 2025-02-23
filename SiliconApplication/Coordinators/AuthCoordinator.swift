@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import FirebaseAuth
 
 class AuthCoordinator: Coordinator {
     var navigationController: UINavigationController
@@ -17,7 +18,11 @@ class AuthCoordinator: Coordinator {
     }
     
     func start() {
-        showMainAuthView()
+        if Auth.auth().currentUser != nil {
+            finish()
+        } else {
+            showMainAuthView() 
+        }
     }
     
     func showMainAuthView() {

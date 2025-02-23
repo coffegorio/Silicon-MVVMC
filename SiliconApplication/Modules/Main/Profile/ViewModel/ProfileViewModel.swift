@@ -8,6 +8,8 @@
 import Foundation
 
 class ProfileViewModel: ObservableObject {
+    @Published var isLoading = false
+    
     private weak var coordinator: MainCoordinator?
     
     init(coordinator: MainCoordinator) {
@@ -15,6 +17,17 @@ class ProfileViewModel: ObservableObject {
     }
     
     func logOut() {
-        coordinator?.finish() // Вызываем метод finish для возврата на экран предварительного просмотра
+        isLoading = true
+        
+        SignOutManager.shared.signOut { [weak self] error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("Ошибка при выходе: \(error.localizedDescription)")
+                } else {
+                    self?.coordinator?.finish() // Возвращаем пользователя на экран авторизации
+                }
+            }
+        }
     }
 }
+
