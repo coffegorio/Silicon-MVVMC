@@ -35,8 +35,9 @@ class MainCoordinator: Coordinator {
         
         let newsFeedNav = createNavController(
             for: newsFeedView,
-            title: "Новости",
-            image: UIImage(systemName: "house")
+            title: "Главная",
+            image: UIImage(systemName: "house"),
+            hidesNavigationBar: true
         )
 
         let createPostNav = createNavController(
@@ -62,15 +63,19 @@ class MainCoordinator: Coordinator {
     private func createNavController<V: View>(
         for view: V,
         title: String,
-        image: UIImage?
+        image: UIImage?,
+        hidesNavigationBar: Bool = false
     ) -> UINavigationController {
-        
         let hostingController = UIHostingController(rootView: view)
         hostingController.title = title
         hostingController.tabBarItem = UITabBarItem(title: title, image: image, selectedImage: nil)
         
-        return UINavigationController(rootViewController: hostingController)
+        let navController = UINavigationController(rootViewController: hostingController)
+        navController.navigationBar.isHidden = hidesNavigationBar
+        
+        return navController
     }
+
     
     func finish() {
         if let coordinatorToRemove = childCoordinators.first {
